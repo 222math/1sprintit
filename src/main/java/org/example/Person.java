@@ -1,11 +1,20 @@
 package org.example;
 
+import org.example.Main;
+import org.example.Monsters;
+
 import java.util.Random;
 import java.util.Scanner;
 
 import static java.lang.Math.abs;
 
 public class Person {
+    private int level = 0;
+    public void setLevel(int level){
+        this.level = level;
+    }
+
+    Main main = new Main();
     Random random = new Random();
     private int hp = 3;
     private int x = 1 + random.nextInt(5);
@@ -38,5 +47,26 @@ public class Person {
     void move (int x, int y){
         setX(x);
         setY(y);
+    }
+
+    public void check(String indicator){
+        if (indicator == "ку"){
+            this.hp += 1;
+            System.out.println("вы пришли к кусту hp =  " + hp);
+        }
+        if (indicator == "мм"){
+            Monsters monsters = new Monsters();
+            if (monsters.taskmonsters(level) == false) {
+                hp -= 1;
+                System.out.println("твое hp " + hp);
+            }
+        }
+        if (indicator == "Бм"){
+            Monsters monsters = new BigMonsters();
+            if (monsters.taskmonsters(level) == false){
+                hp -= 1;
+                System.out.println("твое hp " + hp);
+            }
+        }
     }
 }
