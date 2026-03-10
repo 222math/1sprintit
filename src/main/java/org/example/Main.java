@@ -1,12 +1,9 @@
 package org.example;
 
-import java.net.SocketOption;
+
 import java.util.Random;
 import java.util.Scanner;
 
-
-import static java.lang.Math.max;
-import static java.lang.Math.min;
 
 public class Main {
 
@@ -21,11 +18,11 @@ public class Main {
         int castlex = 1 + random.nextInt(5);
         int size = 5;
 
-        int secondlife = 0;
-        int hp = 3;
+
+
         String indicator = "начало";
-        String[][] board = new String[5][5];
-        for (int y = 1; y <= 5; y++) {
+        String[][] board = new String[size][size];
+        for (int y = 1; y <= size; y++) {
             for (int x = 1; x <= 5; x++) {
                 board[x-1][y-1] = "  ";
             }
@@ -33,7 +30,6 @@ public class Main {
 
         Person person = new Person();
         Monsters monsters = new Monsters();
-
         String leftBlock = " | ";
         String rightBlock = " |";
         String wall = " + —— + —— + —— + —— + —— + ";
@@ -48,26 +44,26 @@ public class Main {
             level = input.nextInt();
             person.setLevel(level);
             System.out.println("твой уровень сложности " + level);
-            for (int i = 0; i <= level+10; i++) {
-                board[random.nextInt(5)][random.nextInt(5)] = "мм";
+            for (int i = 0; i <= level+7; i++) {
+                board[random.nextInt(size)][random.nextInt(size)] = "мм";
             }
             for (int i = 0; i <= 3; i++) {
-                board[random.nextInt(5)][random.nextInt(5)] = "ку";
+                board[random.nextInt(size)][random.nextInt(size)] = "ку";
             }
             for (int i = 0; i <= 5; i++) {
-                board[random.nextInt(5)][random.nextInt(5)] = "xx";
+                board[random.nextInt(size)][random.nextInt(size)] = "xx";
             }
-            for (int i = 0; i <= 3; i++) {
-                board[random.nextInt(5)][random.nextInt(5)] = "Бм";
+            for (int i = 0; i <= level - 1; i++) {
+                board[random.nextInt(size)][random.nextInt(size)] = "Бм";
             }
         };
         if (2>1){ //потом_заменим на прповерку на да
             while (!(person.getX() == castlex && person.getY() == castley) && person.getHp() > 0){
                 board[castlex-1][castley-1] = " з";
                 board[person.getX()-1][person.getY()-1] = "гг";
-                for (int y = 5; y >= 1; y -= 1){
+                for (int y = size; y >= 1; y -= 1){
                     System.out.println(wall);
-                    for (int x = 1; x <= 5; x += 1){
+                    for (int x = 1; x <= size; x += 1){
                         System.out.print(leftBlock);
                         System.out.print(board[x-1][y-1]);
                     };
@@ -78,8 +74,10 @@ public class Main {
                 System.out.println(indicator);
                 person.check(indicator);
 
-
-                System.out.println("твои координаты " + person.getX() + " " + person.getY() +" что бы походить введи координаты клетки, ходить можно не более чем на 1 клетку, по диогонали нельзя");
+                System.out.println("твое hp " + person.getHp());
+                System.out.println("твои координаты " + person.getX() + " " + person.getY());
+                System.out.println("введи новые координаты");
+                //System.out.println("твои координаты " + person.getX() + " " + person.getY() +" что бы походить введи координаты клетки, ходить можно не более чем на 1 клетку, по диогонали нельзя");
                 int x = input.nextInt();
                 int y = input.nextInt();
                 if (person.moveCorrect(x, y)){
@@ -101,10 +99,12 @@ public class Main {
                     } else{
                         indicator = "  ";
                     }
-
+                    if (person.getHp() <= 0) {
+                        monsters.secondlife(person.getSl() , person.getLevel());
+                    }
                 }
             }
-            if (hp > 0){
+            if (person.getHp() > 0){
                 System.out.println("молодец ты победил");
             } else {
                 System.out.println("поражение");

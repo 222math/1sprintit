@@ -1,15 +1,16 @@
 package org.example;
 
-import org.example.Main;
-import org.example.Monsters;
 
 import java.util.Random;
-import java.util.Scanner;
 
 import static java.lang.Math.abs;
 
 public class Person {
     private int level = 0;
+    private int sl = 0;
+    public int getLevel(){
+        return this.level;
+    }
     public void setLevel(int level){
         this.level = level;
     }
@@ -40,9 +41,14 @@ public class Person {
     public void setHp(int hp) {
         this.hp = hp;
     }
-
+    public int getSl(){
+        return this.y;
+    }
+    public void setSl(int sl) {
+        this.sl = sl;
+    }
     public boolean moveCorrect (int x, int y){
-        return (((getX() == x) && (abs(getY()- y) == 1)) || (getY() == y) && (abs(getX()-x) == 1));
+        return (((getX() == x) && (abs(getY()- y) == 1)) || (getY() == y) && (abs(getX()-x) == 1) && x > 0 && x < 6 && y > 0 && y < 6);
     }
     void move (int x, int y){
         setX(x);
