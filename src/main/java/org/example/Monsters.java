@@ -24,7 +24,7 @@ public class Monsters {
     }
 }
 class BigMonsters extends Monsters {
-    Override taskmonsters;
+    @Override
 
     public boolean taskmonsters(int level) {
         Random random = new Random();

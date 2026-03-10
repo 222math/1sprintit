@@ -62,7 +62,7 @@ public class Main {
             }
         };
         if (2>1){ //потом_заменим на прповерку на да
-            while (!(person.getX() == castlex && person.getY() == castley) && hp > 0){
+            while (!(person.getX() == castlex && person.getY() == castley) && person.getHp() > 0){
                 board[castlex-1][castley-1] = " з";
                 board[person.getX()-1][person.getY()-1] = "гг";
                 for (int y = 5; y >= 1; y -= 1){
@@ -91,9 +91,14 @@ public class Main {
 
                 indicator = board[person.getX()-1][person.getY()-1];
                 if (indicator.equals("xx")){
-                    if (random.nextInt(3) == 1){
+                    int xx = random.nextInt(100);
+                    if (xx <= 4){
+                        indicator = "Бм";
+                    }else if (xx <= 34){
                         indicator = "мм";
-                    }else {
+                    } else if (xx <= 49){
+                        indicator = "ку";
+                    } else{
                         indicator = "  ";
                     }
 
