@@ -37,15 +37,6 @@ public class Person {
         this.y = y;
     }
 
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-    public int getSl(){
-        return this.y;
-    }
-    public void setSl(int sl) {
-        this.sl = sl;
-    }
     public boolean moveCorrect (int x, int y){
         return (((getX() == x) && (abs(getY()- y) == 1)) || (getY() == y) && (abs(getX()-x) == 1) && x > 0 && x < 6 && y > 0 && y < 6);
     }
@@ -55,18 +46,18 @@ public class Person {
     }
 
     public void check(String indicator){
-        if (indicator == "ку"){
+        if (indicator.equals("ку")){
             this.hp += 1;
             System.out.println("вы пришли к кусту hp =  " + hp);
         }
-        if (indicator == "мм"){
+        if (indicator.equals("мм")){
             Monsters monsters = new Monsters();
             if (monsters.taskmonsters(level) == false) {
                 hp -= 1;
 
             }
         }
-        if (indicator == "Бм"){
+        if (indicator.equals("Бм")){
             Monsters monsters = new BigMonsters();
             if (monsters.taskmonsters(level) == false){
                 hp -= 1;
