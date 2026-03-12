@@ -15,7 +15,6 @@ public class Person {
         this.level = level;
     }
 
-    Main main = new Main();
     Random random = new Random();
     private int hp = 3;
     private int x = 1 + random.nextInt(5);
@@ -64,14 +63,21 @@ public class Person {
             Monsters monsters = new Monsters();
             if (monsters.taskmonsters(level) == false) {
                 hp -= 1;
-                System.out.println("твое hp " + hp);
+
             }
         }
         if (indicator == "Бм"){
             Monsters monsters = new BigMonsters();
             if (monsters.taskmonsters(level) == false){
                 hp -= 1;
-                System.out.println("твое hp " + hp);
+
+            }
+        }
+        if (hp <= 0 && sl == 0){
+            sl = 1;
+            Monsters monsters = new Monsters();
+            if (monsters.secondlife(level)){
+                hp = 1;
             }
         }
     }

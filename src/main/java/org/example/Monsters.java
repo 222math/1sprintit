@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Monsters {
 
-    public boolean secondlife(int sl , int level){
+    public boolean secondlife(int level){
         Random random1 = new Random();
         Scanner input1 = new Scanner(System.in);
         int a = random1.nextInt(1000*level + 1);
         int b = random1.nextInt(1000*level+1);
         int trueanswer = a*a + b*b;
-        System.out.println("задача: в п/у треугольнике катеты равны " + a + " и " + b + "чему равен квадрат гипотенузы");
+        System.out.println("твое хп < 1 но, игра дает тебе последний шанс, если решишь задачу твое хп станет 1 задача: в п/у треугольнике катеты равны " + a + " и " + b + "чему равен квадрат гипотенузы");
         int inputanswer = input1.nextInt();
         if (inputanswer == trueanswer) {
             System.out.println("верно");
@@ -44,9 +44,9 @@ class BigMonsters extends Monsters {
 
     public boolean taskmonsters(int level) {
         Random random = new Random();
-        int x = random.nextInt(15);
-        int y = random.nextInt(10);
-        int z = random.nextInt(20);
+        int x = random.nextInt(15*level);
+        int y = random.nextInt(10*level);
+        int z = random.nextInt(20*level);
         int ans = x * y - z;
         System.out.println("Реши пример: " + x + " * " + y + " - " + z + " = ?");
         Scanner scanner = new Scanner(System.in);
