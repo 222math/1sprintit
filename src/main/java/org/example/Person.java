@@ -8,9 +8,7 @@ import static java.lang.Math.abs;
 public class Person {
     private int level = 0;
     private int sl = 0;
-    public int getLevel(){
-        return this.level;
-    }
+
     public void setLevel(int level){
         this.level = level;
     }

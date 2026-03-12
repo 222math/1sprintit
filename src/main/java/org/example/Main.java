@@ -43,6 +43,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        int xod = 0;
         Random random = new Random();
         Scanner input = new Scanner(System.in);
         int castley = 5;
@@ -109,6 +110,8 @@ public class Main {
                 if (person.getHp()<= 0 ){
                     break;
                 }
+                xod += 1;
+                System.out.println("ход " + xod);
                 System.out.println("твое hp " + person.getHp());
                 System.out.println("твои координаты " + person.getX() + " " + person.getY());
                 System.out.println("введи новые координаты");

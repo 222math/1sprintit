@@ -10,7 +10,7 @@ public class Monsters {
         int a = random1.nextInt(5*level + 1);
         int b = random1.nextInt(5*level+1);
         int trueanswer = a*a + b*b;
-        System.out.println("твое хп < 1 но, игра дает тебе последний шанс, если решишь задачу твое хп станет 1 задача: в п/у треугольнике катеты равны " + a + " и " + b + "чему равен квадрат гипотенузы");
+        System.out.println("твое хп < 1 но, игра дает тебе последний шанс, если решишь задачу твое хп станет 1 задача: в п/у треугольнике катеты равны " + a + " и " + b + " чему равен квадрат гипотенузы");
         int inputanswer = input1.nextInt();
         if (inputanswer == trueanswer) {
             System.out.println("верно");
@@ -21,6 +21,9 @@ public class Monsters {
             return false;
         }
     }
+
+
+
     public boolean taskmonsters (int level){
         Random random1 = new Random();
         Scanner input1 = new Scanner(System.in);
@@ -52,8 +55,10 @@ class BigMonsters extends Monsters {
         Scanner scanner = new Scanner(System.in);
         int answer = scanner.nextInt();
         if (answer == ans) {
+            System.out.println("верно");
             return true;
         } else {
+            System.out.println("не верно");
             return false;
         }
     }
